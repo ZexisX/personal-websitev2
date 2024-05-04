@@ -1,118 +1,486 @@
-import Image from "next/image";
-import { Inter } from "next/font/google";
+import { AvatarImage, AvatarFallback, Avatar } from "@/components/ui/avatar";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import {
+  DialogTrigger,
+  DialogTitle,
+  DialogDescription,
+  DialogHeader,
+  DialogContent,
+  Dialog,
+} from "@/components/ui/dialog";
 
-const inter = Inter({ subsets: ["latin"] });
-
-export default function Home() {
+export function Component() {
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/pages/index.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
+    <div className="flex min-h-[100dvh] flex-col">
+      <header className="fixed top-0 left-0 z-50 flex h-20 w-full items-center justify-between bg-white px-6 lg:px-12 shadow-sm transition-all">
+        <div className="flex items-center gap-4">
+          <Avatar className="h-10 w-10">
+            <AvatarImage
+              alt="Aedotris"
+              src="https://i.ibb.co/QnnHWWW/IMG-8490.jpg"
             />
-          </a>
+            <AvatarFallback>JD</AvatarFallback>
+          </Avatar>
+          <div className="grid gap-1">
+            <h3 className="text-lg font-semibold">Aedotris</h3>
+            <p className="text-sm text-gray-500 dark:text-gray-400">
+              Software Engineer
+            </p>
+          </div>
         </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
+        <nav className="flex items-center gap-4 lg:hidden">
+          <Link
+            className="text-sm font-medium hover:underline underline-offset-4"
+            href="#"
+          >
+            About
+          </Link>
+          <Link
+            className="text-sm font-medium hover:underline underline-offset-4"
+            href="#"
+          >
+            Projects
+          </Link>
+          <Link
+            className="text-sm font-medium hover:underline underline-offset-4"
+            href="#"
+          >
+            Contact
+          </Link>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button className="rounded-full" size="icon" variant="outline">
+                <QrCodeIcon className="h-6 w-6" />
+                <span className="sr-only">Donate QR Code</span>
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="w-[300px] p-6">
+              <DialogHeader>
+                <DialogTitle>Donate QR Code</DialogTitle>
+                <DialogDescription>
+                  Scan this QR code to donate to my project.
+                </DialogDescription>
+              </DialogHeader>
+              <div className="flex justify-center">
+                <img
+                  alt="Donate QR Code"
+                  className="rounded-lg"
+                  height={200}
+                  src="https://img.vietqr.io/image/MB-0905243477-print.png"
+                  style={{
+                    aspectRatio: "200/200",
+                    objectFit: "cover",
+                  }}
+                  width={200}
+                />
+              </div>
+            </DialogContent>
+          </Dialog>
+        </nav>
+        <nav className="hidden lg:flex items-center gap-4">
+          <Link
+            className="text-sm font-medium hover:underline underline-offset-4"
+            href="#"
+          >
+            About
+          </Link>
+          <Link
+            className="text-sm font-medium hover:underline underline-offset-4"
+            href="#"
+          >
+            Projects
+          </Link>
+          <Link
+            className="text-sm font-medium hover:underline underline-offset-4"
+            href="#"
+          >
+            Contact
+          </Link>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button className="rounded-full" size="icon" variant="outline">
+                <QrCodeIcon className="h-6 w-6" />
+                <span className="sr-only">Donate QR Code</span>
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="w-[300px] p-6">
+              <DialogHeader>
+                <DialogTitle>Donate QR Code</DialogTitle>
+                <DialogDescription>
+                  Scan this QR code to donate to my project.
+                </DialogDescription>
+              </DialogHeader>
+              <div className="flex justify-center">
+                <img
+                  alt="Donate QR Code"
+                  className="rounded-lg"
+                  height={200}
+                  src="https://img.vietqr.io/image/MB-0905243477-print.png"
+                  style={{
+                    aspectRatio: "200/200",
+                    objectFit: "cover",
+                  }}
+                  width={200}
+                />
+              </div>
+            </DialogContent>
+          </Dialog>
+        </nav>
+      </header>
+      <main className="flex-1 pt-20">
+        <section className="container mx-auto grid max-w-3xl gap-8 px-6 py-12 md:px-12 lg:py-20">
+          <div className="grid gap-4">
+            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
+              Hello, I'm Aedotris
+            </h1>
+            <p className="text-lg text-gray-500 dark:text-gray-400">
+              I'm a passionate software engineer with a strong background in
+              full-stack development. I specialize in building scalable and
+              user-friendly web applications.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+            <a className="group" href="#">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-100 transition-colors group-hover:bg-gray-200   dark:group-hover:bg-gray-700">
+                <GithubIcon className="h-6 w-6 text-gray-500 dark:text-gray-400" />
+              </div>
+            </a>
+            <a className="group" href="#">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-100 transition-colors group-hover:bg-gray-200   dark:group-hover:bg-gray-700">
+                <LinkedinIcon className="h-6 w-6 text-gray-500 dark:text-gray-400" />
+              </div>
+            </a>
+            <a className="group" href="#">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-100 transition-colors group-hover:bg-gray-200   dark:group-hover:bg-gray-700">
+                <TwitterIcon className="h-6 w-6 text-gray-500 dark:text-gray-400" />
+              </div>
+            </a>
+            <a className="group" href="#">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-100 transition-colors group-hover:bg-gray-200   dark:group-hover:bg-gray-700">
+                <MailIcon className="h-6 w-6 text-gray-500 dark:text-gray-400" />
+              </div>
+            </a>
+          </div>
+          <div className="grid gap-6">
+            <div className="grid gap-2">
+              <h2 className="text-2xl font-bold">About Me</h2>
+              <p className="text-gray-500 dark:text-gray-400">
+                I am a passionate software engineer with a strong background in
+                full-stack development. I specialize in building scalable and
+                user-friendly web applications using the latest technologies and
+                best practices.
+              </p>
+            </div>
+            <div className="grid gap-2">
+              <h2 className="text-2xl font-bold">My Skills</h2>
+              <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+                <div className="rounded-lg bg-gray-100 p-4 text-center  ">
+                  <ComponentIcon className="mx-auto h-8 w-8 text-gray-500 dark:text-gray-400" />
+                  <p className="mt-2 text-sm font-medium">React</p>
+                </div>
+                <div className="rounded-lg bg-gray-100 p-4 text-center  ">
+                  <NetworkIcon className="mx-auto h-8 w-8 text-gray-500 dark:text-gray-400" />
+                  <p className="mt-2 text-sm font-medium">Node.js</p>
+                </div>
+                <div className="rounded-lg bg-gray-100 p-4 text-center  ">
+                  <TypeIcon className="mx-auto h-8 w-8 text-gray-500 dark:text-gray-400" />
+                  <p className="mt-2 text-sm font-medium">TypeScript</p>
+                </div>
+                <div className="rounded-lg bg-gray-100 p-4 text-center  ">
+                  <DatabaseIcon className="mx-auto h-8 w-8 text-gray-500 dark:text-gray-400" />
+                  <p className="mt-2 text-sm font-medium">PostgreSQL</p>
+                </div>
+                <div className="rounded-lg bg-gray-100 p-4 text-center  ">
+                  <ContainerIcon className="mx-auto h-8 w-8 text-gray-500 dark:text-gray-400" />
+                  <p className="mt-2 text-sm font-medium">Docker</p>
+                </div>
+                <div className="rounded-lg bg-gray-100 p-4 text-center">
+                  <ContainerIcon className="mx-auto h-8 w-8 text-gray-500 dark:text-gray-400" />
+                  <p className="mt-2 text-sm font-medium">Kubernetes</p>
+                </div>
+              </div>
+            </div>
+            <div className="grid gap-2">
+              <h2 className="text-2xl font-bold">My Projects</h2>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm transition-colors hover:bg-gray-100">
+                  <h3 className="text-lg font-semibold">Project 1</h3>
+                  <p className="mt-2 text-gray-500 dark:text-gray-400">
+                    A full-stack web application built with React, Node.js, and
+                    PostgreSQL.
+                  </p>
+                  <div className="mt-4 flex justify-end">
+                    <Link
+                      className="inline-flex h-8 items-center justify-center rounded-md bg-gray-900 px-4 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300"
+                      href="#"
+                    >
+                      View Project
+                    </Link>
+                  </div>
+                </div>
+                <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm transition-colors hover:bg-gray-100">
+                  <h3 className="text-lg font-semibold">Project 2</h3>
+                  <p className="mt-2 text-gray-500 dark:text-gray-400">
+                    A mobile-first web application built with React Native and
+                    Firebase.
+                  </p>
+                  <div className="mt-4 flex justify-end">
+                    <Link
+                      className="inline-flex h-8 items-center justify-center rounded-md bg-gray-900 px-4 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300"
+                      href="#"
+                    >
+                      View Project
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer className="bg-gray-100 py-6 ">
+        <div className="container mx-auto flex items-center justify-between px-6 md:px-12">
+          <p className="text-sm text-gray-500 dark:text-gray-400">
+            © 2024 Aedotris. All rights reserved.
           </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+          <nav className="flex items-center gap-4">
+            <Link
+              className="text-sm hover:underline underline-offset-4"
+              href="#"
+            >
+              Privacy
+            </Link>
+            <Link
+              className="text-sm hover:underline underline-offset-4"
+              href="#"
+            >
+              Terms
+            </Link>
+          </nav>
+        </div>
+      </footer>
+    </div>
   );
 }
+
+function ComponentIcon(props) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M5.5 8.5 9 12l-3.5 3.5L2 12l3.5-3.5Z" />
+      <path d="m12 2 3.5 3.5L12 9 8.5 5.5 12 2Z" />
+      <path d="M18.5 8.5 22 12l-3.5 3.5L15 12l3.5-3.5Z" />
+      <path d="m12 15 3.5 3.5L12 22l-3.5-3.5L12 15Z" />
+    </svg>
+  );
+}
+
+function ContainerIcon(props) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M22 7.7c0-.6-.4-1.2-.8-1.5l-6.3-3.9a1.72 1.72 0 0 0-1.7 0l-10.3 6c-.5.2-.9.8-.9 1.4v6.6c0 .5.4 1.2.8 1.5l6.3 3.9a1.72 1.72 0 0 0 1.7 0l10.3-6c.5-.3.9-1 .9-1.5Z" />
+      <path d="M10 21.9V14L2.1 9.1" />
+      <path d="m10 14 11.9-6.9" />
+      <path d="M14 19.8v-8.1" />
+      <path d="M18 17.5V9.4" />
+    </svg>
+  );
+}
+
+function DatabaseIcon(props) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <ellipse cx="12" cy="5" rx="9" ry="3" />
+      <path d="M3 5V19A9 3 0 0 0 21 19V5" />
+      <path d="M3 12A9 3 0 0 0 21 12" />
+    </svg>
+  );
+}
+
+function GithubIcon(props) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+      <path d="M9 18c-4.51 2-5-2-7-2" />
+    </svg>
+  );
+}
+
+function LinkedinIcon(props) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+      <rect width="4" height="12" x="2" y="9" />
+      <circle cx="4" cy="4" r="2" />
+    </svg>
+  );
+}
+
+function MailIcon(props) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect width="20" height="16" x="2" y="4" rx="2" />
+      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+    </svg>
+  );
+}
+
+function NetworkIcon(props) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect x="16" y="16" width="6" height="6" rx="1" />
+      <rect x="2" y="16" width="6" height="6" rx="1" />
+      <rect x="9" y="2" width="6" height="6" rx="1" />
+      <path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3" />
+      <path d="M12 12V8" />
+    </svg>
+  );
+}
+
+function QrCodeIcon(props) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect width="5" height="5" x="3" y="3" rx="1" />
+      <rect width="5" height="5" x="16" y="3" rx="1" />
+      <rect width="5" height="5" x="3" y="16" rx="1" />
+      <path d="M21 16h-3a2 2 0 0 0-2 2v3" />
+      <path d="M21 21v.01" />
+      <path d="M12 7v3a2 2 0 0 1-2 2H7" />
+      <path d="M3 12h.01" />
+      <path d="M12 3h.01" />
+      <path d="M12 16v.01" />
+      <path d="M16 12h1" />
+      <path d="M21 12v.01" />
+      <path d="M12 21v-1" />
+    </svg>
+  );
+}
+
+function TwitterIcon(props) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
+    </svg>
+  );
+}
+
+function TypeIcon(props) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <polyline points="4 7 4 4 20 4 20 7" />
+      <line x1="9" x2="15" y1="20" y2="20" />
+      <line x1="12" x2="12" y1="4" y2="20" />
+    </svg>
+  );
+}
+export default Component;
