@@ -132,10 +132,10 @@ export function Component() {
         <section className="container mx-auto grid max-w-3xl gap-8 px-6 py-12 md:px-12 lg:py-20">
           <div className="grid gap-4">
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-              Hello, I'm Aedotris
+              Hello, I am Aedotris
             </h1>
             <p className="text-lg text-gray-500 dark:text-gray-400">
-              I'm a passionate software engineer with a strong background in
+              I am a passionate software engineer with a strong background in
               full-stack development. I specialize in building scalable and
               user-friendly web applications.
             </p>
