@@ -9,10 +9,11 @@ import {
   DialogContent,
   Dialog,
 } from "@/components/ui/dialog";
+import { QrCodeIcon } from "@/components/ui/icons";
 
 export function Component() {
   return (
-    <div className="flex min-h-[100dvh] flex-col">
+    <div className="flex min-h-[100vh] flex-col">
       <header className="fixed top-0 left-0 z-50 flex h-20 w-full items-center justify-between bg-white px-6 lg:px-12 shadow-sm transition-all">
         <div className="flex items-center gap-4">
           <Avatar className="h-10 w-10">
@@ -264,7 +265,11 @@ export function Component() {
   );
 }
 
-function ComponentIcon(props) {
+interface IconProps {
+  className?: string;
+}
+
+function ComponentIcon(props: IconProps) {
   return (
     <svg
       {...props}
@@ -286,7 +291,7 @@ function ComponentIcon(props) {
   );
 }
 
-function ContainerIcon(props) {
+function ContainerIcon(props: IconProps) {
   return (
     <svg
       {...props}
@@ -309,7 +314,7 @@ function ContainerIcon(props) {
   );
 }
 
-function DatabaseIcon(props) {
+function DatabaseIcon(props: IconProps) {
   return (
     <svg
       {...props}
@@ -330,7 +335,7 @@ function DatabaseIcon(props) {
   );
 }
 
-function GithubIcon(props) {
+function GithubIcon(props: IconProps) {
   return (
     <svg
       {...props}
@@ -350,7 +355,7 @@ function GithubIcon(props) {
   );
 }
 
-function LinkedinIcon(props) {
+function LinkedinIcon(props: IconProps) {
   return (
     <svg
       {...props}
@@ -371,7 +376,7 @@ function LinkedinIcon(props) {
   );
 }
 
-function MailIcon(props) {
+function MailIcon(props: IconProps) {
   return (
     <svg
       {...props}
@@ -391,7 +396,7 @@ function MailIcon(props) {
   );
 }
 
-function NetworkIcon(props) {
+function NetworkIcon(props: IconProps) {
   return (
     <svg
       {...props}
@@ -414,7 +419,7 @@ function NetworkIcon(props) {
   );
 }
 
-function QrCodeIcon(props) {
+function QrCodeIcon(props: IconProps) {
   return (
     <svg
       {...props}
@@ -428,59 +433,10 @@ function QrCodeIcon(props) {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
-      <rect width="5" height="5" x="3" y="3" rx="1" />
-      <rect width="5" height="5" x="16" y="3" rx="1" />
-      <rect width="5" height="5" x="3" y="16" rx="1" />
-      <path d="M21 16h-3a2 2 0 0 0-2 2v3" />
-      <path d="M21 21v.01" />
-      <path d="M12 7v3a2 2 0 0 1-2 2H7" />
-      <path d="M3 12h.01" />
-      <path d="M12 3h.01" />
-      <path d="M12 16v.01" />
-      <path d="M16 12h1" />
-      <path d="M21 12v.01" />
-      <path d="M12 21v-1" />
+      <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+      <path d="M9 9h6v6H9z" />
     </svg>
   );
 }
 
-function TwitterIcon(props) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
-    </svg>
-  );
-}
-
-function TypeIcon(props) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <polyline points="4 7 4 4 20 4 20 7" />
-      <line x1="9" x2="15" y1="20" y2="20" />
-      <line x1="12" x2="12" y1="4" y2="20" />
-    </svg>
-  );
-}
 export default Component;
